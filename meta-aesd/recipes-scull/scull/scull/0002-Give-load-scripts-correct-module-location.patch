@@ -1,0 +1,36 @@
+From a4a68a6e0be4fc9387b8cc8aca8557c658e7c5c7 Mon Sep 17 00:00:00 2001
+From: MaGeiber <26193554+MaGeiber@users.noreply.github.com>
+Date: Tue, 4 Apr 2023 00:16:40 -0700
+Subject: [PATCH] Give load scripts correct module location
+
+---
+ misc-modules/module_load | 2 +-
+ scull/scull_load         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/misc-modules/module_load b/misc-modules/module_load
+index a669c5e..579dff3 100755
+--- a/misc-modules/module_load
++++ b/misc-modules/module_load
+@@ -22,7 +22,7 @@ else
+ fi
+ 
+ echo "Load our module, exit on failure"
+-insmod ./$module.ko $* || exit 1
++insmod /lib/modules/$module.ko $* || exit 1
+ echo "Get the major number (allocated with allocate_chrdev_region) from /proc/devices"
+ major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)
+ if [ ! -z ${major} ]; then
+diff --git a/scull/scull_load b/scull/scull_load
+index 2ef6a54..6efa228 100755
+--- a/scull/scull_load
++++ b/scull/scull_load
+@@ -13,7 +13,7 @@ fi
+ 
+ # invoke insmod with all arguments we got
+ # and use a pathname, as insmod doesn't look in . by default
+-insmod ./$module.ko $* || exit 1
++insmod /lib/modules/$module.ko $* || exit 1
+ 
+ # retrieve major number
+ major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)

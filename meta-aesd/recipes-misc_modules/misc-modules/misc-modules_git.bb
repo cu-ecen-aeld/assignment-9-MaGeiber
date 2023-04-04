@@ -8,6 +8,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/cu-ecen-aeld/assignment-7-MaGeiber;protocol=https;branch=master \
            file://0001-Changing-makefile.patch \
            file://misc-modules-start-stop \
+           file://0001-Fix-module-location-for-misc-module-load.patch \
            "
 
 # Modify these as desired
@@ -60,8 +61,8 @@ do_install () {
 	install -m 0755 ${WORKDIR}/misc-modules-start-stop ${D}${sysconfdir}/init.d
 	
 	#base_libdir = /lib
-	install -d ${D}${base_libdir}/modules/${KERNEL_VERSION}
-	install -m 0755 ${S}/misc-modules/faulty.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}
-	install -m 0755 ${S}/misc-modules/hello.ko ${D}${base_libdir}/modules/${KERNEL_VERSION}
+	install -d ${D}${base_libdir}/modules/
+	install -m 0755 ${S}/misc-modules/faulty.ko ${D}${base_libdir}/modules/
+	install -m 0755 ${S}/misc-modules/hello.ko ${D}${base_libdir}/modules/
 
 }
