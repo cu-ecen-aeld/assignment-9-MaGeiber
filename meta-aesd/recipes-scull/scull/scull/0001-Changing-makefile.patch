@@ -1,0 +1,23 @@
+From 173847687f40fbc88781abc0072e1a056f90d4fe Mon Sep 17 00:00:00 2001
+From: MaGeiber <26193554+MaGeiber@users.noreply.github.com>
+Date: Mon, 3 Apr 2023 20:56:17 -0700
+Subject: [PATCH] Changing makefile
+
+---
+ Makefile | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7b08c49..eb6ed25 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,5 @@
+ 
+-SUBDIRS =  misc-progs misc-modules \
+-           skull scull scullc scullp lddbus sculld scullv shortprint simple tty \
+-	   pci usb\
+-	   sbull snull short
++SUBDIRS = misc-modules scull
+ 
+ all: subdirs
+ 
