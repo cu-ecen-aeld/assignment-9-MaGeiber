@@ -11,7 +11,7 @@ SRC_URI = "git://github.com/cu-ecen-aeld/assignments-3-and-later-MaGeiber;protoc
 
 # Modify these as desired
 PV = "1.0+git${SRCPV}"
-SRCREV = "0053f360f43755a91b3a6662d3d55f020c9093d5"
+SRCREV = "fda44349f55ec03f8c12a7f1b4eb3e80e49f8afe"
 
 S = "${WORKDIR}/git/aesd-char-driver"
 
